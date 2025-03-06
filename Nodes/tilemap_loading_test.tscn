@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3dd1anb5r0sw"]
+
+[ext_resource type="PackedScene" uid="uid://dt01fhfjfijq0" path="res://Nodes/tile_map.tscn" id="1_a1t6l"]
+[ext_resource type="Script" uid="uid://ln82kl4fw7k6" path="res://Scripts/Nodes/TilemapLoadingTest.cs" id="1_usisp"]
+[ext_resource type="Texture2D" uid="uid://biust4mo1m8da" path="res://Art/minimal_industry.png" id="2_gnrb5"]
+
+[node name="TilemapLoadingTest" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_usisp")
+pathToLevelJson = "res://Data/platformer_world.json"
+tileTexture = ExtResource("2_gnrb5")
+
+[node name="TileMap" parent="." instance=ExtResource("1_a1t6l")]
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AnimationResource" load_steps=5 format=3 uid="uid://cq674ejk0rnuy"]
+
+[ext_resource type="Script" path="res://Scripts/AssetLoading/Nodes/AnimationResource.cs" id="1_1dx63"]
+[ext_resource type="Texture2D" uid="uid://cqgrbaxl4d38s" path="res://Art/dog_kero03.png" id="1_rm2um"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kco0y"]
+atlas = ExtResource("1_rm2um")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xidtv"]
+atlas = ExtResource("1_rm2um")
+region = Rect2(0, 0, 20, 20)
+
+[resource]
+script = ExtResource("1_1dx63")
+Name = 1
+Frames = [SubResource("AtlasTexture_kco0y"), SubResource("AtlasTexture_xidtv")]
+FrameRate = 7
+Looping = true

@@ -1,0 +1,569 @@
+[gd_resource type="Resource" script_class="AnimationArrayResource" load_steps=80 format=3 uid="uid://6fed4qgtd21f"]
+
+[ext_resource type="Resource" uid="uid://cv14jmjkwqxgq" path="res://Resources/Animations/player_idle.tres" id="1_2t1nm"]
+[ext_resource type="Script" uid="uid://dq5fuhixfkd1j" path="res://Scripts/AssetLoading/Nodes/AnimationArrayResource.cs" id="1_jtb0m"]
+[ext_resource type="Texture2D" uid="uid://bnouwkkrqdqak" path="res://Art/grafxkid_sprite_pack_1/10 - Bub/Idle (16 x 16).png" id="4_k3dgp"]
+[ext_resource type="Texture2D" uid="uid://bktnwt3oit1qt" path="res://Art/grafxkid_sprite_pack_1/10 - Bub/Running (16 x 16).png" id="5_mxsay"]
+[ext_resource type="Script" uid="uid://dggm5hdgsm1ee" path="res://Scripts/AssetLoading/Nodes/AnimationResource.cs" id="6_hrqxu"]
+[ext_resource type="Texture2D" uid="uid://b2pxm6uaten34" path="res://Art/mine/bullets.png" id="6_n1wfy"]
+[ext_resource type="Texture2D" uid="uid://cqgrbaxl4d38s" path="res://Art/dog_kero03.png" id="7_bwqbf"]
+[ext_resource type="Texture2D" uid="uid://bc813kicr1syb" path="res://Art/grafxkid_enemies01.png" id="7_p4cen"]
+[ext_resource type="Texture2D" uid="uid://bbev73c3xyomc" path="res://Art/grafxkid_sprite_pack_1/8 - Chi Chi the Bird/Flapping_Wings (16 x 16).png" id="8_qwqf0"]
+[ext_resource type="Texture2D" uid="uid://dms6kwrtcglb5" path="res://Art/grafxkid_sprite_pack_1/4 - Bushly/Running (16 x 16).png" id="9_ubq2r"]
+[ext_resource type="Texture2D" uid="uid://0y6cky1ln3xo" path="res://Art/grafxkid_sprite_pack_1/4 - Bushly/Jumping (16 x 16).png" id="10_q4p23"]
+[ext_resource type="Texture2D" uid="uid://bobn8vt014o7y" path="res://Art/grafxkid_sprite_pack_1/4 - Bushly/Falling (16 x 16).png" id="11_0kv2i"]
+[ext_resource type="Texture2D" uid="uid://co6ap8dmwvu37" path="res://Art/grafxkid_sprite_pack_1/4 - Bushly/Camouflaged (16 x 16).png" id="12_hlvaf"]
+[ext_resource type="Texture2D" uid="uid://ce7n0tvabvhpc" path="res://Art/mine/enemies.png" id="13_b4337"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujk4l"]
+atlas = ExtResource("7_bwqbf")
+region = Rect2(20, 0, 40, 20)
+
+[sub_resource type="Resource" id="Resource_pfstl"]
+resource_name = "PlayerWalk"
+script = ExtResource("6_hrqxu")
+Name = "PlayerWalk"
+Frame = SubResource("AtlasTexture_ujk4l")
+Columns = 2
+Rows = 1
+FrameCount = 0
+FrameRate = 7
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_al6k7"]
+atlas = ExtResource("7_bwqbf")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="Resource" id="Resource_if3tp"]
+resource_name = "PlayerRise"
+script = ExtResource("6_hrqxu")
+Name = "PlayerRise"
+Frame = SubResource("AtlasTexture_al6k7")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgvqi"]
+atlas = ExtResource("7_bwqbf")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="Resource" id="Resource_qcs23"]
+resource_name = "PlayerFall"
+script = ExtResource("6_hrqxu")
+Name = "PlayerFall"
+Frame = SubResource("AtlasTexture_lgvqi")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_att38"]
+atlas = ExtResource("7_bwqbf")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="Resource" id="Resource_mbha5"]
+resource_name = "PlayerIdleUp"
+script = ExtResource("6_hrqxu")
+Name = "PlayerIdleUp"
+Frame = SubResource("AtlasTexture_att38")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu4vd"]
+atlas = ExtResource("7_bwqbf")
+region = Rect2(20, 20, 40, 20)
+
+[sub_resource type="Resource" id="Resource_55d0i"]
+resource_name = "PlayerWalkUp"
+script = ExtResource("6_hrqxu")
+Name = "PlayerWalkUp"
+Frame = SubResource("AtlasTexture_qu4vd")
+Columns = 2
+Rows = 1
+FrameCount = 0
+FrameRate = 7
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ssly"]
+atlas = ExtResource("7_bwqbf")
+region = Rect2(40, 20, 20, 20)
+
+[sub_resource type="Resource" id="Resource_crpye"]
+resource_name = "PlayerRiseUp"
+script = ExtResource("6_hrqxu")
+Name = "PlayerRiseUp"
+Frame = SubResource("AtlasTexture_4ssly")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltryf"]
+atlas = ExtResource("7_bwqbf")
+region = Rect2(60, 20, 20, 20)
+
+[sub_resource type="Resource" id="Resource_0cjxe"]
+resource_name = "PlayerFallUp"
+script = ExtResource("6_hrqxu")
+Name = "PlayerFallUp"
+Frame = SubResource("AtlasTexture_ltryf")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uob5o"]
+atlas = ExtResource("7_bwqbf")
+region = Rect2(20, 40, 20, 20)
+
+[sub_resource type="Resource" id="Resource_7jham"]
+resource_name = "PlayerIdleDown"
+script = ExtResource("6_hrqxu")
+Name = "PlayerIdleDown"
+Frame = SubResource("AtlasTexture_uob5o")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jrvm"]
+atlas = ExtResource("7_bwqbf")
+region = Rect2(20, 40, 40, 20)
+
+[sub_resource type="Resource" id="Resource_r7s0u"]
+resource_name = "PlayerWalkDown"
+script = ExtResource("6_hrqxu")
+Name = "PlayerWalkDown"
+Frame = SubResource("AtlasTexture_3jrvm")
+Columns = 2
+Rows = 1
+FrameCount = 0
+FrameRate = 7
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewg1q"]
+atlas = ExtResource("7_bwqbf")
+region = Rect2(40, 40, 20, 20)
+
+[sub_resource type="Resource" id="Resource_rpcky"]
+resource_name = "PlayerRiseDown"
+script = ExtResource("6_hrqxu")
+Name = "PlayerRiseDown"
+Frame = SubResource("AtlasTexture_ewg1q")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 7
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqgkk"]
+atlas = ExtResource("7_bwqbf")
+region = Rect2(60, 40, 20, 20)
+
+[sub_resource type="Resource" id="Resource_16qew"]
+resource_name = "PlayerFallDown"
+script = ExtResource("6_hrqxu")
+Name = "PlayerFallDown"
+Frame = SubResource("AtlasTexture_yqgkk")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="Resource" id="Resource_0cegf"]
+resource_name = "EnemyIdle"
+script = ExtResource("6_hrqxu")
+Name = "EnemyIdle"
+Frame = ExtResource("4_k3dgp")
+Columns = 2
+Rows = 1
+FrameCount = 0
+FrameRate = 5
+Looping = true
+FacingRight = false
+
+[sub_resource type="Resource" id="Resource_nv6q8"]
+resource_name = "EnemyWalk"
+script = ExtResource("6_hrqxu")
+Name = "EnemyWalk"
+Frame = ExtResource("5_mxsay")
+Columns = 6
+Rows = 1
+FrameCount = 0
+FrameRate = 6
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4oni"]
+atlas = ExtResource("6_n1wfy")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="Resource" id="Resource_26ofj"]
+resource_name = "PlayerBullet"
+script = ExtResource("6_hrqxu")
+Name = "PlayerBullet"
+Frame = SubResource("AtlasTexture_o4oni")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjfau"]
+atlas = ExtResource("5_mxsay")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_shlrm"]
+resource_name = "EnemyAir"
+script = ExtResource("6_hrqxu")
+Name = "EnemyAir"
+Frame = SubResource("AtlasTexture_wjfau")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1vhe"]
+atlas = ExtResource("7_p4cen")
+region = Rect2(32, 112, 64, 16)
+
+[sub_resource type="Resource" id="Resource_5uusb"]
+resource_name = "Flame"
+script = ExtResource("6_hrqxu")
+Name = "Flame"
+Frame = SubResource("AtlasTexture_e1vhe")
+Columns = 4
+Rows = 1
+FrameCount = 0
+FrameRate = 10
+Looping = false
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q063j"]
+atlas = ExtResource("7_p4cen")
+region = Rect2(112, 112, 16, 16)
+
+[sub_resource type="Resource" id="Resource_vt2dl"]
+resource_name = "FlameDie"
+script = ExtResource("6_hrqxu")
+Name = "FlameDie"
+Frame = SubResource("AtlasTexture_q063j")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = false
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1dwn"]
+atlas = ExtResource("6_n1wfy")
+region = Rect2(40, 8, 8, 16)
+
+[sub_resource type="Resource" id="Resource_ikseq"]
+resource_name = "GunUp"
+script = ExtResource("6_hrqxu")
+Name = "GunUp"
+Frame = SubResource("AtlasTexture_m1dwn")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = false
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83l3q"]
+atlas = ExtResource("6_n1wfy")
+region = Rect2(48, 8, 8, 16)
+
+[sub_resource type="Resource" id="Resource_1rlft"]
+resource_name = "GunDown"
+script = ExtResource("6_hrqxu")
+Name = "GunDown"
+Frame = SubResource("AtlasTexture_83l3q")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = false
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dcbs"]
+atlas = ExtResource("6_n1wfy")
+region = Rect2(40, 0, 16, 8)
+
+[sub_resource type="Resource" id="Resource_3l1lt"]
+resource_name = "GunNeutral"
+script = ExtResource("6_hrqxu")
+Name = "GunNeutral"
+Frame = SubResource("AtlasTexture_0dcbs")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = false
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umcg7"]
+atlas = ExtResource("7_p4cen")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="Resource" id="Resource_g15th"]
+resource_name = "RadishHide"
+script = ExtResource("6_hrqxu")
+Name = "RadishHide"
+Frame = SubResource("AtlasTexture_umcg7")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxbkv"]
+atlas = ExtResource("7_p4cen")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="Resource" id="Resource_k27u8"]
+resource_name = "RadishIdle"
+script = ExtResource("6_hrqxu")
+Name = "RadishIdle"
+Frame = SubResource("AtlasTexture_yxbkv")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgcu4"]
+atlas = ExtResource("7_p4cen")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="Resource" id="Resource_ahm0w"]
+resource_name = "RadishJump"
+script = ExtResource("6_hrqxu")
+Name = "RadishJump"
+Frame = SubResource("AtlasTexture_wgcu4")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nln0u"]
+atlas = ExtResource("7_p4cen")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="Resource" id="Resource_oe0an"]
+resource_name = "RadishHurt"
+script = ExtResource("6_hrqxu")
+Name = "RadishHurt"
+Frame = SubResource("AtlasTexture_nln0u")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="Resource" id="Resource_qrxd2"]
+resource_name = "BirdFly"
+script = ExtResource("6_hrqxu")
+Name = "BirdFly"
+Frame = ExtResource("8_qwqf0")
+Columns = 3
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g815"]
+atlas = ExtResource("7_p4cen")
+region = Rect2(0, 64, 16, 64)
+
+[sub_resource type="Resource" id="Resource_eivfw"]
+resource_name = "Tumbleweed"
+script = ExtResource("6_hrqxu")
+Name = "Tumbleweed"
+Frame = SubResource("AtlasTexture_5g815")
+Columns = 1
+Rows = 4
+FrameCount = 0
+FrameRate = 10
+Looping = true
+FacingRight = false
+
+[sub_resource type="Resource" id="Resource_52032"]
+resource_name = "BushRun"
+script = ExtResource("6_hrqxu")
+Name = "BushRun"
+Frame = ExtResource("9_ubq2r")
+Columns = 6
+Rows = 1
+FrameCount = 0
+FrameRate = 10
+Looping = true
+FacingRight = true
+
+[sub_resource type="Resource" id="Resource_ogug3"]
+resource_name = "BushJump"
+script = ExtResource("6_hrqxu")
+Name = "BushJump"
+Frame = ExtResource("10_q4p23")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = true
+
+[sub_resource type="Resource" id="Resource_ppe2b"]
+resource_name = "BushFall"
+script = ExtResource("6_hrqxu")
+Name = "BushFall"
+Frame = ExtResource("11_0kv2i")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = true
+
+[sub_resource type="Resource" id="Resource_fmai2"]
+resource_name = "BushHide"
+script = ExtResource("6_hrqxu")
+Name = "BushHide"
+Frame = ExtResource("12_hlvaf")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu3bc"]
+atlas = ExtResource("13_b4337")
+region = Rect2(62, 2, 19, 28)
+filter_clip = true
+
+[sub_resource type="Resource" id="Resource_8gsny"]
+resource_name = "GhostIdle"
+script = ExtResource("6_hrqxu")
+Name = "GhostIdle"
+Frame = SubResource("AtlasTexture_gu3bc")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1nxc"]
+atlas = ExtResource("13_b4337")
+region = Rect2(62, 31, 19, 28)
+
+[sub_resource type="Resource" id="Resource_qq0gp"]
+resource_name = "GhostShoot"
+script = ExtResource("6_hrqxu")
+Name = "GhostShoot"
+Frame = SubResource("AtlasTexture_y1nxc")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jop2k"]
+atlas = ExtResource("13_b4337")
+region = Rect2(82, 31, 19, 28)
+
+[sub_resource type="Resource" id="Resource_62j85"]
+resource_name = "GhostDead"
+script = ExtResource("6_hrqxu")
+Name = "GhostDead"
+Frame = SubResource("AtlasTexture_jop2k")
+Columns = 2
+Rows = 1
+FrameCount = 0
+FrameRate = 1
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8sus"]
+atlas = ExtResource("13_b4337")
+region = Rect2(62, 2, 40, 28)
+
+[sub_resource type="Resource" id="Resource_n5jx5"]
+resource_name = "GhostWalk"
+script = ExtResource("6_hrqxu")
+Name = "GhostWalk"
+Frame = SubResource("AtlasTexture_u8sus")
+Columns = 2
+Rows = 1
+FrameCount = 0
+FrameRate = 5
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqrum"]
+atlas = ExtResource("13_b4337")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="Resource" id="Resource_eatyj"]
+resource_name = "Wave"
+script = ExtResource("6_hrqxu")
+Name = "Wave"
+Frame = SubResource("AtlasTexture_iqrum")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhwd5"]
+atlas = ExtResource("6_n1wfy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_g7m70"]
+resource_name = "Door"
+script = ExtResource("6_hrqxu")
+Name = "Door"
+Frame = SubResource("AtlasTexture_nhwd5")
+Columns = 1
+Rows = 1
+FrameCount = 0
+FrameRate = 0
+Looping = true
+FacingRight = false
+
+[resource]
+script = ExtResource("1_jtb0m")
+animations = Array[Object]([ExtResource("1_2t1nm"), SubResource("Resource_pfstl"), SubResource("Resource_if3tp"), SubResource("Resource_qcs23"), SubResource("Resource_mbha5"), SubResource("Resource_55d0i"), SubResource("Resource_crpye"), SubResource("Resource_0cjxe"), SubResource("Resource_7jham"), SubResource("Resource_r7s0u"), SubResource("Resource_rpcky"), SubResource("Resource_16qew"), SubResource("Resource_0cegf"), SubResource("Resource_nv6q8"), SubResource("Resource_26ofj"), SubResource("Resource_shlrm"), SubResource("Resource_5uusb"), SubResource("Resource_vt2dl"), SubResource("Resource_ikseq"), SubResource("Resource_1rlft"), SubResource("Resource_3l1lt"), SubResource("Resource_g15th"), SubResource("Resource_k27u8"), SubResource("Resource_ahm0w"), SubResource("Resource_oe0an"), SubResource("Resource_qrxd2"), SubResource("Resource_eivfw"), SubResource("Resource_52032"), SubResource("Resource_ogug3"), SubResource("Resource_ppe2b"), SubResource("Resource_fmai2"), SubResource("Resource_8gsny"), SubResource("Resource_qq0gp"), SubResource("Resource_62j85"), SubResource("Resource_n5jx5"), SubResource("Resource_eatyj"), SubResource("Resource_g7m70")])

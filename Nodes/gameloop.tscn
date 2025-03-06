@@ -1,6 +1,98 @@
-[gd_scene load_steps=2 format=3 uid="uid://ba116qmgihbwh"]
+[gd_scene load_steps=17 format=3 uid="uid://ba116qmgihbwh"]
 
-[ext_resource type="Script" path="res://Scripts/GameLoop.cs" id="1_ma1r0"]
+[ext_resource type="Script" uid="uid://dk6queevrx3no" path="res://Scripts/GameLoop.cs" id="1_ma1r0"]
+[ext_resource type="Resource" uid="uid://6fed4qgtd21f" path="res://Resources/animation_array_resource.tres" id="2_c481t"]
+[ext_resource type="Script" uid="uid://cm4rv05riaeus" path="res://Scripts/AssetLoading/Nodes/SoundArrayResource.cs" id="3_niw1b"]
+[ext_resource type="AudioStream" uid="uid://bdgfycscog2lj" path="res://Audio/8-bit_sound_library/Jump_00.mp3" id="4_ijqbs"]
+[ext_resource type="Script" uid="uid://bi1vthvwqan3a" path="res://Scripts/AssetLoading/Nodes/SoundResource.cs" id="5_7d0sy"]
+[ext_resource type="AudioStream" uid="uid://bmwqvclndqx0f" path="res://Audio/8-bit_sound_library/Shoot_00.mp3" id="6_0nqko"]
+[ext_resource type="PackedScene" uid="uid://cfyv3icjw6cgr" path="res://Nodes/CharacterBodies/player_body.tscn" id="7_s3mrg"]
+[ext_resource type="PackedScene" uid="uid://dt01fhfjfijq0" path="res://Nodes/tile_map.tscn" id="8_32qdd"]
+[ext_resource type="Texture2D" uid="uid://cbi5h1exsy5f5" path="res://Art/char_atlas.png" id="8_tc3u3"]
+[ext_resource type="Texture2D" uid="uid://biust4mo1m8da" path="res://Art/minimal_industry.png" id="9_olagt"]
+[ext_resource type="Shader" uid="uid://vsxpw5a6m6u2" path="res://Nodes/Shaders/pure_white.gdshader" id="11_43ygy"]
+[ext_resource type="Script" uid="uid://bssfte84c4ml3" path="res://Scripts/Nodes/DrawCallback.cs" id="12_e21fa"]
+
+[sub_resource type="Resource" id="Resource_tjx7i"]
+script = ExtResource("5_7d0sy")
+Name = 0
+Audio = ExtResource("4_ijqbs")
+
+[sub_resource type="Resource" id="Resource_wl3bv"]
+script = ExtResource("5_7d0sy")
+Name = 1
+Audio = ExtResource("6_0nqko")
+
+[sub_resource type="Resource" id="Resource_6sqyq"]
+script = ExtResource("3_niw1b")
+sounds = Array[Object]([SubResource("Resource_tjx7i"), SubResource("Resource_wl3bv")])
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mbyp4"]
+shader = ExtResource("11_43ygy")
 
 [node name="GameLoop" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_ma1r0")
+pathToLevelJson = "res://Data/platformer_world.json"
+pathToDialogCSV = "res://Data/dialog.csv"
+animationArrayResource = ExtResource("2_c481t")
+soundArrayResource = SubResource("Resource_6sqyq")
+charBody = ExtResource("7_s3mrg")
+spriteTexture = ExtResource("8_tc3u3")
+tileTexture = ExtResource("9_olagt")
+groundMask = 65
+ceilingMask = 1
+
+[node name="TileMap" parent="." instance=ExtResource("8_32qdd")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ScreenSpaceUILayer" type="CanvasLayer" parent="."]
+
+[node name="DialogUI" type="Control" parent="ScreenSpaceUILayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 177.0
+offset_bottom = 36.0
+
+[node name="ColorRect" type="ColorRect" parent="ScreenSpaceUILayer/DialogUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="Text" type="RichTextLabel" parent="ScreenSpaceUILayer/DialogUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "hello dark"
+scroll_active = false
+scroll_following = true
+
+[node name="Debug" type="Control" parent="ScreenSpaceUILayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerVelocity" type="RichTextLabel" parent="ScreenSpaceUILayer/Debug"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "player velocity
+y:"
+fit_content = true
+autowrap_mode = 0
+
+[node name="PureWhiteDraw" type="Node2D" parent="."]
+material = SubResource("ShaderMaterial_mbyp4")
+script = ExtResource("12_e21fa")

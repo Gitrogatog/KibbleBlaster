@@ -1,4 +1,4 @@
-namespace MyECS;
+namespace MyECS.Systems;
 using System;
 using Godot;
 using MoonTools.ECS;

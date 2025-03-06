@@ -13,6 +13,6 @@ public class CreatePlayerSystem : System
     }
     public override void Update(TimeSpan delta)
     {
-        EntityPrefabs.CreatePlayer(World);
+        // EntityPrefabs.CreatePlayer(World);
     }
 }

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharBodyArrayResource" load_steps=5 format=3 uid="uid://bdh0cbx3cyvki"]
+
+[ext_resource type="PackedScene" uid="uid://cfyv3icjw6cgr" path="res://Nodes/CharacterBodies/player_body.tscn" id="1_1wn7t"]
+[ext_resource type="Script" path="res://Scripts/AssetLoading/Nodes/CharBodyResource.cs" id="2_epe88"]
+[ext_resource type="Script" path="res://Scripts/AssetLoading/Nodes/CharBodyArrayResource.cs" id="3_ku35e"]
+
+[sub_resource type="Resource" id="Resource_ecq1h"]
+script = ExtResource("2_epe88")
+group = 0
+body = ExtResource("1_1wn7t")
+
+[resource]
+script = ExtResource("3_ku35e")
+bodies = Array[Object]([SubResource("Resource_ecq1h")])

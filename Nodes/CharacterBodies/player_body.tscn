@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfyv3icjw6cgr"]
+
+[ext_resource type="Texture2D" uid="uid://cqgrbaxl4d38s" path="res://Art/dog_kero03.png" id="1_f1uh0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2efim"]
+atlas = ExtResource("1_f1uh0")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gv10"]
+size = Vector2(6, 13)
+
+[node name="PlayerBody" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 65
+wall_min_slide_angle = 0.23911
+floor_constant_speed = true
+floor_block_on_wall = false
+floor_max_angle = 1.39626
+floor_snap_length = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = SubResource("AtlasTexture_2efim")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_8gv10")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_right = 20.0
+offset_bottom = 20.0

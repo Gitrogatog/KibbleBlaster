@@ -24,7 +24,7 @@ public class DrawColoredRectSystem : System
 
             ColoredRect coloredRect = Get<ColoredRect>(entity);
             Vector2 position = Get<Position>(entity).Value;
-            Rect2 rect = new(position, coloredRect.Size);
+            Rect2 rect = new(position - coloredRect.Size / 2, coloredRect.Size);
             drawNode.DrawRect(rect, coloredRect.Color);
         }
     }

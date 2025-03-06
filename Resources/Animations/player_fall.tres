@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AnimationResource" load_steps=4 format=3 uid="uid://been3tfx0hone"]
+
+[ext_resource type="Texture2D" uid="uid://0nyoewv40u8v" path="res://Art/arcade_platformerV2 (1).png" id="1_5ydsi"]
+[ext_resource type="Script" path="res://Scripts/AssetLoading/Nodes/AnimationResource.cs" id="1_n032b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ajwl"]
+atlas = ExtResource("1_5ydsi")
+region = Rect2(72, 48, 16, 16)
+
+[resource]
+script = ExtResource("1_n032b")
+Name = 3
+Frames = [SubResource("AtlasTexture_1ajwl")]
+FrameRate = 0
+Looping = false

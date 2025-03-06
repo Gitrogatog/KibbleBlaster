@@ -23,6 +23,10 @@ public readonly struct AABB
 
     public float Width { get; }
     public float Height { get; }
+    public float MinX { get; }
+    public float MinY { get; }
+    public float MaxX { get; }
+    public float MaxY { get; }
     public Vector2 TopLeft
     {
         get
@@ -92,6 +96,10 @@ public readonly struct AABB
         Center = new Vector2(x, y);
         Width = w;
         Height = h;
+        MinX = x - Width * 0.5f;
+        MinY = y - Height * 0.5f;
+        MaxX = x + Width * 0.5f;
+        MaxY = y + Height * 0.5f;
     }
 
     public AABB(Vector2 position, float w, float h)
@@ -99,6 +107,10 @@ public readonly struct AABB
         Center = position;
         Width = w;
         Height = h;
+        MinX = position.X - Width * 0.5f;
+        MinY = position.Y - Height * 0.5f;
+        MaxX = position.X + Width * 0.5f;
+        MaxY = position.Y + Height * 0.5f;
     }
 
     public bool Contains(Vector2 point)
@@ -140,6 +152,12 @@ public readonly struct AABB
         }
 
         return (Vector2.Zero, false);
+    }
+
+    public bool SimpleOverlap(AABB other)
+    {
+        return MinX <= other.MaxX && other.MinX <= MaxX && MinY <= other.MaxY && other.MinY <= MaxY;
+        // return minB <= maxA && minA <= maxB;
     }
 
     Vector2 PenetrationVector(AABB md)

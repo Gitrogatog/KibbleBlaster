@@ -1,8 +1,9 @@
 namespace MyECS;
-using Godot;
-using MoonTools.ECS;
 using System;
 using System.Collections.Generic;
+using Godot;
+using MoonTools.ECS;
+using MyECS.Components;
 
 public readonly record struct MatchClass<T>(int ID);
 public readonly record struct MatchNode<T>(int ID) where T : Node, new();
@@ -99,6 +100,10 @@ public static class NodeStorage<T> where T : Node, new()
         return new MatchNode<T>(id);
     }
 }
+
+
+
+
 
 public static class RootStorage
 {
