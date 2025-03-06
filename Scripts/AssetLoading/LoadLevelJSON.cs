@@ -34,8 +34,6 @@ public class LoadLevelJSON
             GD.Print("No such file: " + filePath);
             return;
         }
-        // using FileStream fileStream = File.OpenRead(filePath);
-        // jsonObject = JsonSerializer.Deserialize<LDTKJsonObject>(fileStream);
         string contents = File.ReadAllText(filePath);
 
         jsonObject = LdtkJson.FromJson(contents);
@@ -46,11 +44,6 @@ public class LoadLevelJSON
         ReadCollisionTiles(atlasSource);
 
         InitTileIDToSlope();
-
-
-        // Level level0 = jsonObject.Levels[0];
-        // ReadLevel(level0);
-        // GD.Print($"number of levels: {result.levels.Length}");
     }
     TileSetAtlasSource GetAtlasByName(string name)
     {
@@ -85,7 +78,6 @@ public class LoadLevelJSON
                 {
                     string collisionName = (string)tileData.GetCustomData("slope");
                     slopeNameToTile[collisionName] = tilePos;
-                    // GD.Print($"{collisionName} at pos {tilePos}");
                 }
             }
         }
@@ -102,7 +94,6 @@ public class LoadLevelJSON
         }
         tilemap = new Tilemap(maxTileCount, tileSize);
         LevelInfo.tilemap = tilemap;
-        // tileID = new string[maxTileCount];
     }
     void InitTileIDToSlope()
     {
@@ -144,61 +135,21 @@ public class LoadLevelJSON
     {
         foreach (FieldInstance fieldInstance in level.FieldInstances)
         {
-            // switch(fieldInstance.Identifier){
-            //     case "Path0":
-            //         break;
-            //     case "Path1":
-            //         break;
-            //     case "Path2":
-            //         break;
-            //     case 
-            // }
+
         }
-        // bool tilemapResized = false;
-        // foreach (ldtk.LayerInstance layerinstance in level.LayerInstances)
-        // {
-        //     if (!tilemapResized && layerinstance.Identifier != "BackgroundGrid")
-        //     {
-
-        //         tilemapResized = true;
-        //     }
-
-        // }
         gdTilemap.Clear();
-        // foreach (LayerInstance layerInstance in level.LayerInstances)
-        // {
-        //     switch (layerInstance.Identifier)
-        //     {
 
-        //     }
-        // }
         LayerInstance layerInstance = GetLayerInstanceByName(level, "Ground");
 
         tilemap.Resize((int)layerInstance.CWid, (int)layerInstance.CHei);
         tilemap.ClearSprites();
         LoadTileSpritesFromTileLayer(layerInstance);
-        // LoadTileCollidersFromTileLayer(layerInstance);
 
         layerInstance = GetLayerInstanceByName(level, "Entities");
         foreach (EntityInstance entityInstance in layerInstance.EntityInstances)
         {
             ReadEntity(entityInstance);
         }
-
-        // LayerInstance layerInstance = GetLayerInstanceByName(level, "Ground");
-        // // tilemap.Resize((int)layerInstance.CWid, (int)layerInstance.CHei);
-        // LoadTilemapLayerFromTileLayer(layerInstance);
-        // layerInstance = GetLayerInstanceByName(level, "Entities");
-        // foreach (ldtk.EntityInstance entityinstance in layerInstance.EntityInstances)
-        // {
-        //     GD.Print("Reading one entity");
-        //     ReadEntity(entityinstance);
-        // }
-        // layerInstance = GetLayerInstanceByName(level, "ChunkyTiles");
-        // SetUniqueTileSprites(layerInstance);
-        // LogPoints();
-        // LogPaths();
-        // PathData.LogPaths();
 
     }
     LayerInstance GetLayerInstanceByName(Level level, string name)
@@ -226,15 +177,7 @@ public class LoadLevelJSON
             gdTilemap.SetCell(0, tilePos, slopeTileSourceID, atlasTilePos);
         }
     }
-    // void LoadTileCollidersFromTileLayer(LayerInstance layerInstance)
-    // {
-    //     foreach (var tile in layerInstance.GridTiles)
-    //     {
-    //         int id = (int)tile.T;
-    //         string slopeName = tileIDToSlope[id];
 
-    //     }
-    // }
     void ReadEntity(EntityInstance entityInstance)
     {
         Vector2I position = new Vector2I((int)entityInstance.Px[0], (int)entityInstance.Px[1]) + tileSize / 2;
@@ -262,7 +205,7 @@ public class LoadLevelJSON
                     break;
                 }
             case "Thing":
-                { //the casual revolution
+                {
 
                     ThingType t = NameToThing((string)entityInstance.FieldInstances[0].Value);
                     SpawnFacing spawnFacing = NameToFacing((string)entityInstance.FieldInstances[4].Value);
@@ -312,58 +255,8 @@ public class LoadLevelJSON
 
                     break;
                 }
-                // case "House":
-                //     {
-                //         int level = (int)entityInstance.FieldInstances[0].Value;
-                //         EntityPrefabs.CreateHouse(World, position, level);
-                //         break;
-                //     }
-                // case "ExitTile":
-                //     {
-                //         EntityPrefabs.CreateExitTile(World, position);
-                //         break;
-                //     }
 
         }
-        // EntityType entityType = entityInstance.Identifier switch
-        // {
-        //     "Player" => EntityType.Player,
-        //     "Coin" => EntityType.Coin,
-        //     "Goomba" => EntityType.Goomba,
-        //     "Door" => EntityType.Door,
-        //     "WalkingGoomba" => EntityType.WalkingGoomba,
-        //     "PathGoomba" => EntityType.PathGoomba,
-        //     "Thwomp" => EntityType.Thwomp,
-        //     "Box" => EntityType.Box,
-
-        //     _ => EntityType.Blank
-
-        // };
-        // var origin = EntityPrefabs.CreateOrigin(World, position, entityType);
-        // foreach (FieldInstance fieldInstance in entityInstance.FieldInstances)
-        // {
-        //     switch (fieldInstance.Identifier)
-        //     {
-        //         case "Path":
-        //             int path = (int)fieldInstance.Value;
-        //             World.Set(origin, new FollowPath(path));
-        //             break;
-        //         case "InitialTargetPoint":
-        //             int pointID = (int)fieldInstance.Value;
-        //             World.Set(origin, new TargetPathPoint(pointID));
-        //             break;
-        //         case "TileDir":
-        //             World.Set(origin, new MovementDirection(TileUtils.StringToTileDir((string)fieldInstance.Value)));
-        //             break;
-        //         case "SmashDir":
-        //             World.Set(origin, new SmashDirection());
-        //             break;
-        //         case "MoveSpeed":
-        //             float speed = (float)fieldInstance.Value;
-        //             World.Set(origin, new HopSpeed(speed));
-        //             break;
-        //     }
-        // }
     }
     static ThingType NameToThing(string name)
     {
@@ -387,99 +280,4 @@ public class LoadLevelJSON
             _ => SpawnFacing.FacePlayer
         };
     }
-    // void ReadPathPoint(EntityInstance entityinstance)
-    // {
-    //     Vector2I position = new Vector2I((int)entityinstance.Grid[0], (int)entityinstance.Grid[1]);
-    //     int id = (int)entityinstance.FieldInstances[0].Value;
-    //     pathPoints[id] = position;
-    // }
-    // void ReadPath(EntityInstance entityInstance)
-    // {
-    //     int pathID = (int)entityInstance.FieldInstances[0].Value;
-    //     GD.Print($"path id beaing read: {pathID}");
-    //     // int i = (int)v1.ToObject(typeof(int));
-    //     int[] pointIDs = entityInstance.FieldInstances[1].Value.ToObject(typeof(int[]));
-    //     SimpleList<int> path = paths[pathID];
-    //     path.SetLength(pointIDs.Length);
-    //     for (int i = 0; i < pointIDs.Length; i++)
-    //     {
-    //         path[i] = pointIDs[i];
-    //     }
-    // }
-    // void SetUniqueTileSprites(LayerInstance layerInstance)
-    // {
-    //     int numTiles = tilemap.totalTiles;
-    //     foreach (var tile in layerInstance.GridTiles)
-    //     {
-    //         int id = tilemap.xy_id((int)tile.Px[0] / tileSize.X, (int)tile.Px[1] / tileSize.Y);
-    //         // if (tile.A < 0.5)
-    //         // {
-    //         //     tilemap.tiles[id] = TileType.Empty;
-    //         //     continue;
-    //         // }
-    //         Vector2I startPos = new Vector2I((int)tile.Src[0], (int)tile.Src[1]);
-    //         tilemap.tileSprites[id] = new Rect2I(startPos, tileSize);
-    //     }
-    // }
-    // void CreateTilemapFromIntGrid(LayerInstance layerInstance)
-    // {
-    //     // tilemap.Resize((int)layerinstance.CWid, (int)layerinstance.CHei);
-    //     int numTiles = tilemap.tiles.Length;
-    //     GD.Print($"tile array length {numTiles}, totalTiles {tilemap.totalTiles}");
-    //     GD.Print($"intgridlength: {layerInstance.IntGridCsv.Length}");
-    //     GD.Print($"autolayer length: {layerInstance.AutoLayerTiles.Length}");
-    //     for (int i = 0; i < numTiles; i++)
-    //     {
-    //         TileType tileType = IntGridToTileType((int)layerInstance.IntGridCsv[i]);
-    //         tilemap.tiles[i] = tileType;
-    //         tilemap.colors[i] = tileType switch
-    //         {
-    //             TileType.Field => StaticSprite.colors[2],
-    //             TileType.Forest => StaticSprite.colors[2],
-    //             TileType.Road => StaticSprite.colors[4],
-    //             TileType.Mountain => StaticSprite.colors[4],
-    //             TileType.Water => StaticSprite.colors[1],
-    //             TileType.Brick => StaticSprite.colors[6],
-    //             TileType.FloorBrick => StaticSprite.colors[7],
-    //             TileType.Swamp => StaticSprite.colors[2],
-    //             _ => Colors.White
-    //         };
-    //         tilemap.tileSprites[i] = default;
-    //         // var AutoLayerTiles
-    //         // Vector2I startPos = new Vector2I((int)layerinstance.AutoLayerTiles[i].Src[0], (int)layerinstance.AutoLayerTiles[i].Src[1]);
-    //         // tilemap.tileSprites[i] = new Rect2I(startPos, tileSize);
-    //     }
-    //     foreach (var tile in layerInstance.AutoLayerTiles)
-    //     {
-    //         int id = tilemap.xy_id((int)tile.Px[0] / tileSize.X, (int)tile.Px[1] / tileSize.Y);
-    //         if (tile.A < 0.5)
-    //         {
-    //             tilemap.tiles[id] = TileType.Empty;
-    //             continue;
-    //         }
-
-    //         Vector2I startPos = new Vector2I((int)tile.Src[0], (int)tile.Src[1]);
-    //         tilemap.tileSprites[id] = new Rect2I(startPos, tileSize);
-    //     }
-    //     tilemap.PopulateBlocked();
-    //     tilemap.LogTiles();
-    //     // return tilemap;
-    // }
-    // static TileType IntGridToTileType(int id)
-    // {
-    //     return id switch
-    //     {
-    //         0 => TileType.Empty,
-    //         1 => TileType.Field,
-    //         2 => TileType.Forest,
-    //         3 => TileType.Road,
-    //         4 => TileType.Mountain,
-    //         5 => TileType.Water,
-    //         6 => TileType.Water,
-    //         7 => TileType.Brick,
-    //         8 => TileType.FloorBrick,
-    //         10 => TileType.Swamp,
-    //         _ => TileType.Empty
-    //     };
-    // }
 }

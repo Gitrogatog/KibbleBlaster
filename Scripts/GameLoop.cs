@@ -11,16 +11,6 @@ using MyECS.Systems;
 
 public partial class GameLoop : Node2D
 {
-    // what i can contribute
-    // what i want to learn
-    // stuff about me
-
-    // enemy ai
-    // level swapping
-    // texture packing
-
-    // perfect blue
-    // paprika
 
     public World World { get; } = new World();
     SystemGroup readyGroup;
@@ -40,7 +30,6 @@ public partial class GameLoop : Node2D
     [Export] AnimationArrayResource animationArrayResource;
     [Export] SoundArrayResource soundArrayResource;
     [Export] PackedScene charBody;
-    // [Export] CharBodyArrayResource charBodyArrayResource;
     [Export] Texture2D spriteTexture;
     [Export] Texture2D tileTexture;
     [Export(PropertyHint.Layers2DPhysics)] uint groundMask;
@@ -58,7 +47,6 @@ public partial class GameLoop : Node2D
 
         GlobalAssets.charBody = charBody;
 
-        // charBodyArrayResource.Load();
 
         animationArrayResource.Load();
         soundArrayResource.Load(this);
